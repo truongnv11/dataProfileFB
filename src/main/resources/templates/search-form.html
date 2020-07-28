@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Trường Nguyễn</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div style="padding-left: 40px; padding-right: 40px; padding-top: 20px">
+		<form class="form-inline" th:action="@{/search}" method="get">
+			<div class="form-group mb-10">
+				<input
+					type="text" class="form-control" id="inputPassword2" style="width: 500px;"
+					th:name="uri"
+					placeholder="Nhập Uri">
+			</div>
+			<button type="submit" class="btn mb-2">Tìm kiếm</button>
+		</form>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Trường Nguyễn</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div style="padding-left: 40px; padding-right: 40px; padding-top: 20px">
+		<form class="form-inline" th:action="@{/search}" method="get">
+			<div class="form-group mb-10">
+				<input type="text" class="form-control" id="inputPassword2" style="width: 500px;"
+					th:name="uri" th:value="${uri}" placeholder="Nhập Uri">
+			</div>
+			<button type="submit" class="btn mb-2">Tìm kiếm</button>
+		</form>
+	</div>
+
+
+	<div style="padding-left: 40px; padding-right: 40px; padding-top: 20px">
+		<div class="row">
+			<h2 th:text="${person.nick}"></h2>
+			<div class="col-md-6">
+				<div class="margin-top: 10px, border: 1px solid red">
+					<h3>Thông tin cá nhân</h3>
+					<table class="table">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Property</th>
+								<th scope="col">Value</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row"></th>
+								<td>Family Name</td>
+								<td th:text="${person.familyName}"></td>
+							</tr>
+							<tr>
+								<th scope="row"></th>
+								<td>Given Name</td>
+								<td th:text="${person.givenName}"></td>
+							</tr>
+							<tr>
+								<th scope="row"></th>
+								<td>Birthday</td>
+								<td th:text="${person.birthday}"></td>
+							</tr>
+							<tr>
+								<th scope="row"></th>
+								<td>Phone</td>
+								<td th:text="${person.phone}"></td>
+							</tr>
+							<tr>
+								<th scope="row"></th>
+								<td>Gmail</td>
+								<td th:text="${person.mbox}"></td>
+							</tr>
+							<tr>
+								<th scope="row"></th>
+								<td>Local</td>
+								<td th:text="${person.locality}"></td>
+							</tr>
+							<tr>
+								<th scope="row"></th>
+								<td>School Homepage</td>
+								<td th:text="${person.schoolHomepage}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="margin-top: 10px, border: 1px solid red"
+					th-if="${person.friends.length > 0}">
+					<h3>Bạn bè</h3>
+					<div th:each="friend : ${person.friends}">
+						<h4 th:text="${friend.nick}"></h4>
+						<table class="table">
+							<thead class="thead-dark">
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Property</th>
+									<th scope="col">Value</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row"></th>
+									<td>URI</td>
+									<td th:text="${friend.uri}"></td>
+								</tr>
+								<tr>
+									<th scope="row"></th>
+									<td>Family Name</td>
+									<td th:text="${friend.familyName}"></td>
+								</tr>
+								<tr>
+									<th scope="row"></th>
+									<td>Given Name</td>
+									<td th:text="${friend.givenName}"></td>
+								</tr>
+								<tr th:if="${friend.birthday}">
+									<th scope="row"></th>
+									<td>Birthday</td>
+									<td th:text="${friend.birthday}"></td>
+								</tr>
+								<tr th:if="${friend.phone}">
+									<th scope="row"></th>
+									<td>Phone</td>
+									<td th:text="${friend.phone}"></td>
+								</tr>
+								<tr th:if="${friend.mbox}">
+									<th scope="row"></th>
+									<td>Gmail</td>
+									<td th:text="${friend.mbox}"></td>
+								</tr>
+								<tr>
+									<th scope="row"></th>
+									<td>Local</td>
+									<td th:text="${friend.locality}"></td>
+								</tr>
+								<tr>
+									<th scope="row"></th>
+									<td>School Homepage</td>
+									<td th:text="${friend.schoolHomepage}"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-md-6">
+				<div
+					class="margin-top: 10px, border: 1px solid red; padding-left: 20px">
+					<h3>Bài viết</h3>
+					<table class="table" th:each="post : ${person.posts}">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col" width="5%">#</th>
+								<th scope="col" width="20%">Property</th>
+								<th scope="col">Value</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row"></th>
+								<td>URI</td>
+								<td th:text="${post.uri}"></td>
+							</tr>
+							<tr>
+								<th scope="row"></th>
+								<td>Content</td>
+								<td th:text="${post.title}"></td>
+							</tr>
+							<tr th:if="${post.locality}">
+								<th scope="row"></th>
+								<td>Local</td>
+								<td th:text="${post.locality}"></td>
+							</tr>
+							<tr>
+								<th scope="row"></th>
+								<td>Creator</td>
+								<td th:text="${post.creator}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

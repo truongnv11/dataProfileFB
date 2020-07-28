@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Trường Nguyễn</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div style="padding-left: 40px; padding-right: 40px; padding-top: 20px">
+		<form class="form-inline" th:action="@{/search}" method="get">
+			<div class="form-group mb-5">
+				<input
+					type="text" class="form-control" id="inputPassword2" style="width: 500px;"
+					th:name="uri"
+					th:value="${uri}"
+					placeholder="Nhập Uri">
+			</div>
+			<button type="submit" class="btn mb-2">Tìm kiếm</button>
+		</form>
+	</div>
+
+	<div style="padding-left: 40px; padding-right: 40px; padding-top: 20px">
+		<hr>
+		<div
+			class="margin-top: 10px, border: 1px solid red; padding-left: 20px">
+			<h3>Bài viết</h3>
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col" width="5%">#</th>
+						<th scope="col" width="20%">Property</th>
+						<th scope="col">Value</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row"></th>
+						<td>Content</td>
+						<td th:text="${post.title}"></td>
+					</tr>
+					<tr th:if="${post.locality}">
+						<th scope="row"></th>
+						<td>Local</td>
+						<td th:text="${post.locality}"></td>
+					</tr>
+					<tr>
+						<th scope="row"></th>
+						<td>Creator</td>
+						<td th:text="${post.creator}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</body>
+</html>
